@@ -25,5 +25,15 @@ export default {
       console.log('ERROR', error);
       throw error;
     }
+  },
+  async getFormPokemon(context, payload) {
+    try {
+      const response = await axios.get(payload , { headers: { 
+        'Access-Control-Allow-Origin' : '*'
+      }});
+      return response;
+    } catch (error) {
+      console.log('ERROR', error)
+    }
   }
 };

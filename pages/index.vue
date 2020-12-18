@@ -1,24 +1,49 @@
 <template>
-  <v-col>
-    <div>POKEDEX</div>
-    <v-card-title>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search Pokemon"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="pokemonList"
-      :items-per-page="5"
-      class="elevation-1"
-      :search="search"
-      @click:row="handleClick"
-    ></v-data-table>
-  </v-col >
+  <div>
+    <v-col>
+      <div>POKEDEX</div>
+      <v-card-title>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search Pokemon"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :items="pokemonList"
+        :items-per-page="5"
+        class="elevation-1"
+        :search="search"
+        @click:row="handleClick"
+      ></v-data-table>
+    
+    </v-col>
+    <v-col>PREDICTION POKEMON FIGHT</v-col>
+    <v-row>
+      <div style="width: 45%">
+        <v-text-field
+          v-model="search"
+          label="Pokemon A"
+          single-line
+          hide-details
+          solo
+        ></v-text-field>
+      </div>
+      <div style="width: 10%; display: flex; flex-direction: row; justify-content: center;align-items: center;"> VS </div>
+      <div style="width: 45%">
+        <v-text-field
+          v-model="search"
+          label="Pokemon B"
+          single-line
+          hide-details
+          solo
+        ></v-text-field>
+      </div>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -49,9 +74,9 @@ export default {
   },
   methods: {
     handleClick(pokemon) {
-      this.getPokemonDetail(pokemon)
+      this.goPokemonDetail(pokemon)
     },
-    async getPokemonDetail(pokemon) {
+    async goPokemonDetail(pokemon) {
       try {
         const response = await this.$store.dispatch('pokemon/getPokemonDetails', pokemon);
         if (response.status === 200) {
