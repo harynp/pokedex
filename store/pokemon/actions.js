@@ -35,5 +35,17 @@ export default {
     } catch (error) {
       console.log('ERROR', error)
     }
-  }
+  },
+  async getPokemonStatus(context, payload) {
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${payload}` , { headers: { 
+        'Access-Control-Allow-Origin' : '*'
+      }});
+      const { data } = response;
+      return data;
+    } catch (error) {
+      console.log('ERROR', error);
+      throw error;
+    }
+  },
 };
