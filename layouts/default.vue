@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-container>
+  <v-app v-bind:style="{ 'background-image': 'url(' + backgroundImg + ')' }">
+    <v-main >
+      <v-container class="container">
         <nuxt />
       </v-container>
     </v-main>
@@ -9,9 +9,11 @@
 </template>
 
 <script>
+import Pokemon from '../assets/images/pokemon.jpg';
 export default {
   data () {
     return {
+      backgroundImg: Pokemon,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -35,3 +37,9 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+.container {
+  background: cornsilk;
+}
+</style>

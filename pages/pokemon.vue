@@ -9,7 +9,7 @@
               class="grey darken-4"
             ></v-img>
             <v-card-title class="title">
-              <div>
+              <div class="info-pokemon">
                 <div>Name: {{ getDetailPokemon.name }} </div>
                 <div>
                   Ability : 
@@ -38,8 +38,14 @@
 export default {
   data() {
     return {
-      imagesUrl: ''
+      imagesUrl: '',
+      detail: {}
     }
+  },
+  created() {
+    const cacheData =  this.$store.getters['pokemon/getPokemonDetail'];
+    this.detail = cacheData;
+    
   },
   computed: {
     getDetailPokemon() {
@@ -66,3 +72,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .info-pokemon {
+    font-size: larger;
+    font-family: monospace;
+  }
+</style>

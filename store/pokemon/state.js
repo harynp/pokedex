@@ -1,4 +1,4 @@
 export default () => ({
-  detailPokemon: {}
+  detailPokemon: localStorage.getItem('pokemonDetail') || {}
 });
 

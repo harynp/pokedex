@@ -1,5 +1,9 @@
 export default {
   getPokemonDetail: state => {
-    return state.detailPokemon
-  } 
+    try {
+      return JSON.parse(state.detailPokemon);
+    } catch (error) {
+      return state.detailPokemon;
+    }
+  },
 };
